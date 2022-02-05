@@ -1,7 +1,34 @@
 import React, { Component } from 'react';
+// import Radium,{Style} from 'radium';
+import styled from 'styled-components';
 import './App.css';
 import Person from './Person/Person';
 
+const StyledButton = styled.button`
+  background-color:#000;
+  color:#fff;
+  font:inherit;
+  border:1px solid brown;
+  padding:8px;
+  cursor:pointer;
+  transition: all .3s linear; 
+
+  &:hover{
+    background-color:gold;
+    color:#eee;
+    border:2px solid black;
+    border-radius:12px;
+  }
+
+  &:active {
+    background-color:deeppink;
+    color:#000;
+    border:2px solid brown;
+    border-radius:8px;
+    transform: scale(0.92) translateY(-5px);
+  }
+
+`
 class App extends Component {
   state = {
     persons: [
@@ -44,9 +71,9 @@ class App extends Component {
     const person = {
       ...this.state.persons[personId] 
     };
-    // const name = "name"
-    person["name"] = event.target.value;
-    // person.name = event.target.value;
+    
+    // person["name"] = event.target.value;
+    person.name = event.target.value;
 
     // const personObj = Object.assign({},this.state.persons[personId])
     const persons = [...this.state.persons];
@@ -62,15 +89,16 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "#212121",
+      backgroundColor: "#262626",
       font:"inherit",
-      "border":"4px solid brown",
+      "border":"1px solid brown",
       transition : "all linear .3s",
       padding: "10px",
       "color":"#eee",
       cursor:"pointer",
-      "&:hover":{
-        backgroundColor: "green"
+      ":hover":{
+        backgroundColor:"lightgreen",
+        color:"#000"
       }
     }
 
@@ -79,7 +107,7 @@ class App extends Component {
       persons = (
           <div >
             {
-              this.state.persons.map(({name,age,id}) => <Person key={id } name = {name} age={age} click={ () => this.deletePersonHandler(id)} changed = { (e) => this.nameChangeHandler(e,id) }/>)
+              this.state.persons.map(({name,age,id}) => <Person style = {style} key={id } name = {name} age={age} click={ () => this.deletePersonHandler(id)} changed = { (e) => this.nameChangeHandler(e,id) }/>)
             }
             
             {/* <Person
@@ -93,13 +121,32 @@ class App extends Component {
           </div> 
       )
 
+      style.backgroundColor = "gold";
+      // style[":hover"] = {
+      //   backgroundColor:"lightbrown",
+      //   color:"#212121"
+
+      // }
+
     }
 
+    let classes = [];
+    if(this.state.persons.length > 2){
+      classes.push("lightblue");
+    }
+    if(this.state.persons.length <= 2){
+      classes.unshift();
+      classes.push("red");
+    }
+    if(this.state.persons.length <=1 ){
+      classes.unshift();
+      classes.push("bold")
+    }
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
-        <button style={style} onClick={this.togglePersonsHandler.bind(this)}>Toggle Persons</button>
+        <p className={classes.join(" ")}>This is really working!</p>
+        <StyledButton  onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
         {persons}
         
       </div>

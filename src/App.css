@@ -2,8 +2,17 @@
   text-align: center;
 }
 
+.red{
+  color: orange;
+}
 
-.App-link {
+.lightblue {
   color: #61dafb;
 }
 
+
+.bold{
+  color: red;
+  font-weight:bold;
+  font-style: italic;
+}
