@@ -11,8 +11,13 @@
 }
 
 .invert{
-    padding: 1.5rem 2rem;
+    padding: 8px 10px;
+    border-radius: 8px;
     background-color: blue;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
 }
 
 .true{

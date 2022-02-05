@@ -1,0 +1,50 @@
+.App {
+  text-align: center;
+}
+
+.red{
+  color: orange;
+}
+
+.lightblue {
+  color: #61dafb;
+}
+
+
+.bold{
+  color: red;
+  font-weight:bold;
+  font-style: italic;
+}
+
+.Button{
+  background-color:greenyellow;
+   color:#fff;
+   font:inherit;
+   border:1px solid brown;
+   padding:8px;
+   cursor:pointer;
+   transition: all .3s linear; 
+
+
+}
+
+.Button:hover{
+  background-color:lightblue;
+  color:#eee;
+  border:2px solid black;
+  border-radius: 8px;;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.Button.Red{
+  background-color: red;
+  color: blue;
+}
+.Button.Red:hover{
+  background-color: salmon;
+  color: lightblue;
+}
