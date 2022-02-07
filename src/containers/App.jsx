@@ -10,6 +10,11 @@ import classes from './App.module.css';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    console.log("[App.js] constructor");
+  }
+
   state = {
     persons: [
       {id : "a"  , name: 'Max', age: 28 },
@@ -18,7 +23,16 @@ class App extends Component {
     ],
     otherState: 'some other value',
     showPersons : false
-  };
+  }
+
+  static getDerivedStateFromProps(props,state){
+    console.log("[App.js] getDerivedStateFromProps",props )
+    return state;
+  }
+
+  componentDidMount(){
+    console.log("[App.js] componentDidMount");
+  }
 
   switchNameHandler = (newName) => {
     // console.log('Was clicked!');
@@ -36,7 +50,7 @@ class App extends Component {
     const persons = this.state.persons.slice();
     const persons1 = [...this.state.persons];
 
-    // console.log(persons);
+    
     persons.splice(personIndex,1)
     
     
@@ -69,7 +83,7 @@ class App extends Component {
   }
 
   render() {
-    
+    console.log("[App.js] render")
     let btnClasses = [classes.Button];
 
     let persons = null ;

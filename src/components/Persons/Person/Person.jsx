@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Component} from "react";
 import styled from "styled-components";
 // import Radium from "radium";
 import classes from  "./Person.styles.module.scss";
@@ -27,22 +27,25 @@ const DeleteBtn = styled.span`
     }
 `
 
-const Person = ({name , age , children = "", click ,changed}) => {
+class Person extends Component{
     
-    return(
+    render(){
+        console.log("[Person.js] rendering.....");
+        return(
         
-        <div className={classes.person}>
-
-            <p className={`${children ? "true" :"invert-2"}`} >I'm {name} and i'm {age} years old.</p>
-
-            <p className={`${children ? "true" :"invert-2"}`}  > {children} </p>
-
-            { <input className={classes["invert"]}  type="text" onChange={changed} placeholder={name} /> }
-
-            <DeleteBtn onClick={click} >delete</DeleteBtn>
-
-        </div>
-    )
+            <div className={classes.person}>
+    
+                <p className={`${this.props.children ? "true" :"invert-2"}`} >I'm {this.props.name} and i'm {this.props.age} years old.</p>
+    
+                <p className={`${this.props.children ? "true" :"invert-2"}`}  > {this.props.children} </p>
+    
+                { <input className={classes["invert"]}  type="text" onChange={this.props.changed} placeholder={this.props.name} /> }
+    
+                <DeleteBtn onClick={this.props.click} >delete</DeleteBtn>
+    
+            </div>
+        )
+    }
 }
 
 export default  Person;                  

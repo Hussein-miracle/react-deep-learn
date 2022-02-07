@@ -1,9 +1,12 @@
-import React from "react";
+import React,{useEffect} from "react";
 import classes from "./Cockpit.module.scss";
 
 
 const Cockpit = ({title,persons ,showPersons,togglePersonsHandler }) => {
-  console.log(title)
+  // console.log(title)
+  useEffect(() => {
+    console.log('[Cockpit.js] useEffect')
+  })
     let btnClasses = [classes.button];
     let styleArray = [];
     if(persons.length > 2){
@@ -21,7 +24,7 @@ const Cockpit = ({title,persons ,showPersons,togglePersonsHandler }) => {
     btnClasses.push(classes.Red)
     return(
         <div className={classes.Cockpit}>
-            <h1>Hi, I'm a React App for {title}</h1>
+            <h1>Hi, I'm a React App</h1>
             <p className={styleArray.join(" ")}>This is really working!</p>
             <button className={btnClasses.join(" ")} alt ={showPersons} onClick={togglePersonsHandler}>Toggle Persons</button>
         </div >
